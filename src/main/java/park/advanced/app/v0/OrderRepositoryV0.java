@@ -1,4 +1,4 @@
-package park.advanced.app.vo;
+package park.advanced.app.v0;
 
 
 import lombok.RequiredArgsConstructor;

@@ -21,7 +21,7 @@ public class OrderControllerV3 {
   public String request(String itemId) {
     TraceStatus status = null;
     try {
-      status = trace.begin("OrderControllerV1.request()");
+      status = trace.begin("OrderController.request()");
       orderService.orderItem(itemId);
       trace.end(status);
       return "ok";

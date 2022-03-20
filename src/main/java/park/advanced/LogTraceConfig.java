@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import park.advanced.trace.logtrace.FieldLogTrace;
 import park.advanced.trace.logtrace.LogTrace;
+import park.advanced.trace.logtrace.ThreadLocalLogTrace;
 
 /**
  * Created by park on 2022/03/13.
@@ -13,6 +14,6 @@ public class LogTraceConfig {
 
   @Bean
   public LogTrace logTrace() {
-    return new FieldLogTrace();
+    return new ThreadLocalLogTrace();
   }
 }

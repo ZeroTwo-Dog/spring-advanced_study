@@ -2,16 +2,16 @@ package park.advanced.trace.threadLocal;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.springframework.stereotype.Service;
 import park.advanced.trace.threadLocal.code.FiledService;
+import park.advanced.trace.threadLocal.code.ThreadLocalService;
 
 /**
  * Created by park on 2022/03/20.
  */
 @Slf4j
-public class FiledServiceService {
+public class ThreadLocalServiceTest {
 
-  private FiledService filedService = new FiledService();
+  private ThreadLocalService service = new ThreadLocalService();
   
   @Test
   public void filed() throws Exception {
@@ -19,10 +19,10 @@ public class FiledServiceService {
     log.info("main start");
     //when
     Runnable userA = () -> {
-      filedService.logic("userA");
+      service.logic("userA");
     };
     Runnable userB = () -> {
-      filedService.logic("userB");
+      service.logic("userB");
     };
     //then
     Thread threadA = new Thread(userA);
@@ -31,8 +31,8 @@ public class FiledServiceService {
     threadB.setName("thread-B");
 
     threadA.start();
-    sleep(2000); // 동시성 문제 발생 X
-//    sleep(100); // 동시성 문제 발생 O
+//    sleep(2000); // 동시성 문제 발생 X
+    sleep(100); // 동시성 문제 발생 O
     threadB.start();
     sleep(3000); // 메인스레드 종료대기
 
